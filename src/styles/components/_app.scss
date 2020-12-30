@@ -27,6 +27,23 @@
       margin-top: 15px;
     }
 
+    .data-input {
+      @include sm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+      }
+
+      &__control {
+        margin-top: 15px;
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
     @include sm {
       max-width: 425px;
     }
