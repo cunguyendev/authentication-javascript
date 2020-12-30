@@ -4,7 +4,7 @@ Authentication build with JavaScript
 
 Author: Cu Nguyen &lt;[cunguyen.dev@gmail.com](cnguyen.dev@gmail.com)&gt;
 
-Deploy to Netlify: [https://authentication-javascript.netlify.app/](https://https://authentication-javascript.netlify.app/)
+Deploy to Netlify: [https://authentication-javascript.netlify.app/](https://authentication-javascript.netlify.app/)
 
 ## Requirements
 
