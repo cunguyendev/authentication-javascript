@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+
 (function main() {
   const username = document.querySelector('input[name="username"]');
   const password = document.querySelector('input[name="password"]');
@@ -32,6 +34,8 @@
     }
     return false;
   };
+
+  console.log(jwt);
 
   loginButton.addEventListener('click', () => {
     const isValidData = validationHandling();
