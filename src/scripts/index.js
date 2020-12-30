@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
   const password = document.querySelector('input[name="password"]');
   const loginButton = document.querySelector('button[name="btn-login"]');
   const message = document.querySelector('.actions__message');
+  const dataInputLayout = document.querySelector('.data-input');
 
   const showYearInTheFooter = () => {
     const year = document.querySelector('.main-footer__copyright').innerHTML.replace('$year', `${new Date().getFullYear()}`);
@@ -35,11 +36,34 @@ import jwt from 'jsonwebtoken';
     return false;
   };
 
-  console.log(jwt);
-
   loginButton.addEventListener('click', () => {
-    const isValidData = validationHandling();
+    if (dataInputLayout.style.display === 'none') {
+      localStorage.removeItem('token');
+    } else {
+      const isValidData = validationHandling();
 
-    console.log(username.value, password.value);
+      if (isValidData) {
+        const token = jwt.sign({
+          username: username.value,
+          password: password.value,
+        }, 'secret');
+
+        localStorage.setItem('token', token);
+      }
+    }
+
+    document.location.reload();
+  });
+
+  jwt.verify(localStorage.getItem('token'), 'secret', (err, decoded) => {
+    if (decoded && decoded.username) {
+      message.innerHTML = `Hello ${decoded.username}`;
+      loginButton.textContent = 'Logout';
+      dataInputLayout.style.display = 'none';
+    } else {
+      message.innerHTML = '';
+      loginButton.textContent = 'Login';
+      dataInputLayout.removeAttribute('style');
+    }
   });
 }());
